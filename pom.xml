@@ -420,21 +420,26 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>cobertura-maven-plugin</artifactId>
-                        <version>${cobertura.version}</version>
-                        <configuration>
-                            <formats>
-                                <format>html</format>
-                                <format>xml</format>
-                            </formats>
-                        </configuration>
+                        <version>${cobertura.version}</version>                        
 						<executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>cobertura</goal>
-                            </goals>
-                        </execution>
-                    </executions>
+                            <execution>
+                                <id>enforce-versions</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+									<formats>
+										<format>html</format>
+										<format>xml</format>
+									</formats>
+								</configuration>
+                                    <rules>
+                                        <requireMavenVersion>
+                                            <version>[2.0.9, 2.2.1]</version>
+                                        </requireMavenVersion>
+                                    </rules>                                
+                            </execution>
+                        </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
